@@ -1,0 +1,19 @@
+/* ==========================================================================
+   STUDENT-PHOTO / COMPENENTS
+   ========================================================================== */
+
+.student-photo {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 300px;
+    z-index: -1;
+}
+
+.container--photo {
+    overflow: hidden;
+    margin-top: 20px;
+    min-height: 40vh;
+    position: relative;
+    border: 3px var(--color-primary) solid;
+}

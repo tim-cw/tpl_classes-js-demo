@@ -1,0 +1,266 @@
+<dialog id="num01-maquette">
+    <a href="#num01" class="dialog__close"></a>
+    <div class="dialog__content">
+        <h3>Résultat final</h3>
+        <p>Rien à voir tout se passe dans votre console</p>
+        <p class="close">Cliquez à l'extérieur pour fermer la fenêtre</p>
+    </div>
+</dialog>
+<dialog id="num02-maquette">
+    <a href="#num02" class="dialog__close"></a>
+    <div class="dialog__content">
+        <h3>Résultat final</h3>
+        <p>Rien à voir tout se passe dans votre console</p>
+        <p class="close">Cliquez à l'extérieur pour fermer la fenêtre</p>
+    </div>
+</dialog>
+
+<dialog id="num01-explication">
+    <a href="#num01" class="dialog__close"></a>
+    <div class="dialog__content">
+        <h3>Étape 1 - Click sur un bouton</h3>
+        <p>
+            Dans ce numéro, il y a 3 boutons, nous désirons faire apparaître un message personnalisé dans la console lors du click sur ces derniers. Allons-y
+            une étape à la fois et travaillons que sur le premier bouton.
+        </p>
+        <h3>HTML</h3>
+        <p>
+            N'oubliez pas qu'il faut ajouter une classe préfix
+            <strong>.js-</strong>
+            sur les éléments que nous voulons cibler en HTML à partir du JavaScript. Les classes pour les styles et celles pour les comportements en JS doivent
+            être
+            <u>différentes</u>
+            .
+        </p>
+        <ul>
+            <li>
+                Ouvrez le fichier
+                <em>_partials/ex2/num1.html</em>
+            </li>
+            <li>
+                Ajoutez la classe css
+                <strong>js-button</strong>
+                à tous les boutons de la page.
+            </li>
+        </ul>
+        <h3>JavaScript</h3>
+        <ol>
+            <li>
+                Dans la méthode
+                <em>init</em>
+                , définissez une variable nommée
+                <strong>button</strong>
+                et allez chercher une référence à l'élément html
+                <strong>js-button</strong>
+                à l'aide du
+                <em>querySelector</em>.
+                <p>
+                    ⚠️ N'oubliez pas que vous pouvez faire des console.log à
+                    <u>chaque étape</u>
+                    pour être certain d'être sur le bon chemin.
+                </p>
+            </li>
+            <li>
+                Créez une méthode
+                <strong>onClick</strong>
+            </li>
+            <li>
+                Ajoutez un
+                <strong>écouteur sur le click</strong>
+                de la variable
+                <em>button</em>
+                qui appellera la méthode
+                <strong>onClick</strong>
+                .
+            </li>
+            <li>
+                <strong>Testez</strong>
+                avec un console.log dans la méthode appellée lors du click afin de vérifier que votre branchement fonctionne. Si ce n'est pas le cas, pensez à
+                l'exception du contexte lors d'un événement comme le click.
+            </li>
+        </ol>
+        <h3 style="text-transform: none;">event.currentTarget</h3>
+        <p>
+            Il sera souvent nécessaire de savoir sur quel élément html on a cliqué. Comme le contexte dans le bouton est maintenant modifié avec le <strong>.bind(this)</strong>,
+            <strong>le fait d'utiliser simplement <em>this</em> à l'intérieur ne fonctionne plus</strong>
+            . Lorsqu'un élément est déclanché, un
+            <em>objet</em>
+            contenant une multitude d'information accompagne l'événement. Il est alors possible d'utiliser cet objet pour savoir sur quel élément a été
+            déclanché le dit événement. Cet objet est toujours disponible via le premier paramètre.
+        </p>
+        <ul>
+            <li>
+                Dans la
+                <em>déclaration</em>
+                de votre méthode onClick(), passez-lui paramètre
+                <strong>event</strong>.
+            </li>
+        </ul>
+        <p>⚠️ Ce paramètre devient donc disponible dans le contexte de la méthode <strong>onClick</strong>.</p>
+        <ul>
+            <li>
+                <em>event</em>
+                contient, entre autre, l'élément HTML sur lequel l'écouteur a été créé avec le <em>addEventListener</em>. Effectuez un
+                <em>console.log</em>
+                avec
+                <em>event</em>
+                pour aller voir ce que la variable contient.
+            </li>
+        </ul>
+        <p>
+            ⚠️ La propriété
+            <strong>currentTarget</strong>
+            est celle qui nous intéresse alors qu'elle nous donne justement une référence de l'élément HTML en question. Il est alors possible d'interagir avec
+            cet élément.
+        </p>
+        <p>
+            Si on utilise la propriété
+            <em>innerText</em>
+            sur cet élément (
+            <strong>event.currentTarget.innerText</strong>
+            ), il est alors possible d'aller chercher la valeur de texte de l'élément en question.
+        </p>
+        <ul>
+            <li>
+                Faites apparaître dans la console la phrase suivante à l'aide d'un
+                <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Template_literals" target="_blank">Template String</a>
+                : Le bouton ${METTRE LA VALEUR DU TEXTE DU BOUTON ICI} a été cliqué. Vous devrez trouver le caractère <em>backtick</em> sur votre clavier.
+            </li>
+            <li>Testez maitenant avec le premier bouton.</li>
+        </ul>
+        <p>
+            Si vous cliquez sur les autres boutons, rien ne se passe. Pourquoi? Parce que
+            <em>querySelector</em>
+            ne retourne
+            <u>que le premier élément</u>
+            correspondant.
+        </p>
+        <ul>
+            <li>
+                Adaptez le code en remplaçant
+                <em>querySelector</em>
+                par
+                <strong>querySelectorAll</strong>
+                et la boucle
+                <strong>for</strong>
+                afin que les 3 boutons fonctionnent de la même façon.
+            </li>
+        </ul>
+        <p>
+            N'oubliez pas de renommer votre variable
+            <em>button</em>
+            pour
+            <strong>buttons</strong>
+            , ça fera plus de sens ainsi comme vous utilisez querySelectorAll et que ce dernier retourne un tableau pouvant contenir DES éléments HTML.
+        </p>
+        <p>
+            Utilisez <u>toujours</u> un nom de variable singulier lorsque vous utilisez <strong>querySelector</strong> et un nom pluriel avec <strong>querySelectorAll</strong>. Votre code sera plus compréhensible ainsi.</strong>
+        </p>
+    </div>
+</dialog>
+<dialog id="num02-explication">
+    <a href="#num02" class="dialog__close"></a>
+    <div class="dialog__content">
+        <h3>Étape 1 - Un peu de réusinage</h3>
+        <p>
+            La classe <em>Main</em> va servir pour plusieurs actions différentes, nous allons faire un peu de ménage dans notre structure pour être capable de mieux
+            s'y retrouver.
+        </p>
+        <h3>Ménage</h3>
+        <ul>
+            <li>
+                Créez une méthode <strong>initNum1</strong>
+                <ul>
+                    <li>Transférez-y le code complet qui a servi à mettre un click sur tous les boutons.</li>
+                    <li>Appellez cette méthode à partir de votre <em>init</em>. N'oubliez pas le <strong>this</strong>.</li>
+                </ul>
+            </li>
+            <li>Créez une méthode <strong>initNum2</strong></li>
+        </ul>
+        
+        <h3>Étape 2 - Logique gestion des fruits</h3>
+
+        <p>En programmation orientée objet, lorsqu'on parle d'une variable globale, il s'agit d'une variable qui sera déclarée dans le <em>contexte</em> global et donc, <em>disponible partout</em> à l'intérieur d'une instance de la classe <em>Main</em>. La variable globale n'est pas déclarée avec <em>const</em> ou <em>let</em> mais plutôt avec le <em>this</em> (ex. : this.nomDeLaVariable = valeur;).</p>
+        <p>Utilisons un <em>tableau</em> pour y mettre une simple liste de fruits.</p>
+
+        <p>Nous créons les variables globales dans le <em>constructor</em> pour faciliter la compréhension du code. </p>
+        <ul>
+            <li>
+                Dans la méthode <em>constructor</em>, créez une variable <u>globale</u> nommée <strong>fruits</strong> à laquelle vous assignerez le tableau suivant : <strong>['banane', 'fraise',
+                    'pomme', 'framboise']</strong>.
+            </li>
+        </ul>
+
+        <p>
+            Si vous regardez dans _partials/ex2/num2.html, vous pourrez voir un div avec la classe <em>js-container</em> ainsi qu'un bouton avec la classe css <em>js-add</em>. C'est lors du clic sur ce bouton qu'on injectera des éléments HTML créé dans le JavaScript (dynamique) dans le conteneur (.js-container).
+        </p>
+
+        <p>Il faut stocker une <u>référence</u> à ces deux éléments HTML comme nous voulons les utiliser dans le contexte de notre class <em>Main</em>.</p>
+        <ol>
+            <li>Créez une autre variable globale nommée <strong>container</strong> dans le constructor et utilisez le <em>querySelector</em> pour aller chercher la référence.</li>
+            <li>Faites la même chose pour le <em>bouton</em> sous votre variable <em>container</em> en utilisant le nom de variable <strong>buttonAdd</strong>.</li>
+        </ol>
+
+
+        <h3>Ajoutons un fruit</h3>
+        <p>Nous allons créer une nouvelle méthode qui va ajouter un texte dans le container lorsqu'on clic sur le bouton.</p>
+        <ul>
+            <li>Créez la méthode <strong>addFruit</strong> dans votre classe <em>Main</em></li>
+            <li>
+                Dans la méthode initNum2, ajoutez un <u>écouteur</u> de click sur le <em>buttonAdd</em> qui appelle la méthode <em>addFruit</em>. N'oubliez pas l'exception de contexte
+                pour un événement.
+            </li>
+            <li>
+                Dans la méthode <em>addFruit</em> :
+                <ul>
+                    <li>
+                        Mettez un <em>console log</em> et à l'aide d'un <em>Template String</em>, affichez la phrase suivante: <strong>Le fruit du jour est la NOM_DU_FRUIT!</strong>. Vous devez
+                        remplacer <strong>NOM_DU_FRUIT</strong> par le tout premier élément du tableau contenu dans la variable <em>this.fruits</em>. Utilisez les crochets et allez
+                        chercher la référence à la première position du tableau (ex. : this.fruits[0]).
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>Maintenant, créons un élément HTML dynamiquement (il n'existe pas dans le HTML).</p>
+        <ul>
+            <li>
+                Dans la méthode <em>addFruit</em>, créez une variable nommée <strong>p</strong> (qui ne sera accessible que de cette méthode (pas globale)). Vous allez ensuite lui créer et assigner un
+                nouvel élément HTML de type paragraphe en utilisant la méthode <strong>document.createElement('p')</strong>.
+            </li>
+        </ul>
+        <p>Afin de mettre du contenu texte dans cet élément, nous utiliserons la propriété innerText.</p>
+        <ul>
+            <li>À la suite de la ligne précédente, ajoutez <strong>p.innerText =</strong> puis déplacez le contenu <em>Template String</em> de votre console.log à la suite du égal. (Pas besoin de vous dire d'effacer la console, vous y auriez pensé n'est-ce pas?)</li>
+        </ul>
+        <p>Pour insérer votre élément HTML contenu dans la variable <strong>p</strong> dans le conteneur, il faut une référence vers cet objet. Vous l'avez fait un peu plus haut avec <strong>this.container</strong></p>
+        <p>Vous devriez aussi savoir comment ajouter un élément dans une autre à vous de jouer 💪. Un aide-mémoire ou vos notes aideraient surement.</p>
+
+        <h3>Un fruit aléatoire</h3>
+        <p>
+            Notre tableau contient 4 fruits, il nous faudrait donc un numéro aléatoire entre 1 et 4. Cependant, l'index du premier élément d'un tableau commence
+            à 0 plutôt qu'à 1... Nous aurons donc besoin, au final, d'un nombre entre 0 et 3.
+        </p>
+        <ul>
+            <li>
+                Au tout début de la méthode <em>addFruit</em>, créez une variable locale nommée <strong>number</strong> en lui assignant la valeur <strong>Math.random()</strong>. Ceci retournera une valeur <em>entre 0
+                    (inclus) et 1 (exclus)</em>. Mettez un <em>console.log</em> juste au dessous pour valider la valeur.
+            </li>
+        </ul>
+        <p>Suivez les étapes suivantes et testez à plusieurs reprises en rafraichissant afin de voir le nombre aléatoire changer pour bien comprendre.</p>
+        <ul>
+            <li>
+                Modifiez l'assignation de la variable <em>number</em> en multipliant le résultat par <strong>this.fruits.length</strong>, soit la propriété du tableau qui indique le
+                nombre d'éléments qu'il contient.
+            </li>
+        </ul>
+        <p>Ceci retourne un nombre avec décimal entre 0 (inclus) et 4 (exclus). Cependant, l'index d'un tableau doit absolument être un nombre entier.</p>
+        <ul>
+            <li>Arrondissez la valeur vers le bas en <u>englobant</u> l'assignation de la variable <em>number</em>... <strong>= Math.floor(Math.random() * this.fruits.length);</strong></li>
+            <li>
+                Finalement, au lieu de toujours aller chercher le fruit à l'emplacement [0] dans le tableau, utilisez la variable <em>number</em> pour dynamiser la
+                sélection.
+            </li>
+        </ul>
+    </div>
+</dialog>
