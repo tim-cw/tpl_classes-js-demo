@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>cw4 . Les classes JavaScript - Exercice</title>
+        <title>CW4 - Les classes en JavaScript - Contexte</title>
 
         <link rel="stylesheet" href="styles/main.css" />
         <script src="scripts/main.js" defer></script>
@@ -12,46 +12,21 @@
     <body>
         <section class="exercice">
             <div class="wrapper">
-                <section class="number" id="num1">
-                    <div class="number__header">
-                        <h2>
-                            numéro 1 -
-                            <span>Jouons avec le contexte</span>
-                        </h2>
-                        <p>
-                            Suite à la démonstration précédente, vous comprenez maintenant mieux les contextes en JavaScript. C'est maintenant le temps de vous
-                            retrousser les manches afin reproduire quelque chose de similaire.
-                        </p>
-                        <h3>Instructions</h3>
-                        <div class="instructions">
-                            <a href="#num01-maquette" class="button--instruction">résultat final</a>
-                            <a href="#num01-explication" class="button--instruction">fiche technique</a>
-                        </div>
-                    </div>
-                    <div class="number__content">{% include "_partials/ex2/_num1.html" %}</div>
-                </section>
-                <section class="number" id="num2">
-                    <div class="number__header">
-                        <h2>
-                            numéro 2 -
-                            <span>On pratique</span>
-                        </h2>
-                        <p>
-                            Dans ce dernier numéro, nous allons créer un élément HTML que nous injecterons en JavaScript dans le HTML avec du contenu aléatoire
-                            choisi dans un tableau.
-                        </p>
-                        <p>L'objectif est de comprendre comment créer entièrement en JavaScript un élément HTML, le manipuler et l'ajouter dans notre page.</p>
+                <h1>.:: Le contexte</h1>
 
-                        <h3>Instructions</h3>
-                        <div class="instructions">
-                            <a href="#num02-maquette" class="button--instruction">résultat final</a>
-                            <a href="#num02-explication" class="button--instruction">fiche technique</a>
-                        </div>
+                <section class="number">
+                    <div class="number__header">
+                        <h2>02 - Le contexte</h2>
                     </div>
-                    <div class="number__content">{% include "_partials/ex2/_num2.html" %}</div>
+                    <div class="number__content">{% include "_partials/contexte/_ex02.html" %}</div>
+                </section>
+                <section class="number">
+                    <div class="number__header">
+                        <h2>03 - Pratiquons le contexte</h2>
+                    </div>
+                    <div class="number__content">{% include "_partials/contexte/_ex03.html" %}</div>
                 </section>
             </div>
         </section>
-        {% include "_partials/dialog/_contexte.html" %}
     </body>
 </html>
